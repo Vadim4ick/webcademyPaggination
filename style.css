@@ -1,0 +1,149 @@
+:root {
+  --comment-width: 300px;
+  --comment-height: 300px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #f5f5f5; /* Light gray background */
+}
+
+button {
+  background: none;
+  outline: none;
+  border: none;
+}
+
+.pagination-btn[disabled] {
+  cursor: auto;
+  opacity: 0.4;
+}
+
+.container {
+  max-width: 1450px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+.comments-container {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(var(--comment-width), 1fr));
+  justify-items: center;
+}
+
+.comment {
+  background-color: #fff; /* White background */
+  border: 1px solid #e0e0e0; /* Light gray border */
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  padding: 10px;
+  width: var(--comment-width);
+  height: var(--comment-height);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+h1 {
+  color: #ff9800; /* Orange heading color */
+}
+
+.comment h2 {
+  color: #333; /* Dark gray heading color */
+  margin: 5px 0 10px 0;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.comment p {
+  color: #555;
+  opacity: 0.7;
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.comment:hover {
+  transform: scale(1.05);
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination-btn {
+  margin: 0 5px;
+  padding: 8px 12px;
+  color: #333;
+  background: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination-btn.active {
+  background-color: #ff9800;
+  color: #fff;
+}
+
+.pages {
+  display: flex;
+}
+
+/* Скелетоны */
+.skeletons {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(var(--comment-width), 1fr));
+  justify-items: center;
+}
+
+.skeleton {
+  /* Высота  скелетона коммента */
+  height: var(--comment-width);
+  position: relative;
+  box-shadow: 0 2px 10px 0 #e2eef1;
+  background: #e2eef1;
+  overflow: hidden;
+}
+
+.skeleton::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: -150px;
+  top: 0;
+  height: 100%;
+  width: 80%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    #fff 50%,
+    transparent 100%
+  );
+  animation: load 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.skeleton.pagination-btn {
+  height: 33.5px;
+  width: 33.4px;
+}
+
+@keyframes load {
+  from {
+    left: -150px;
+  }
+
+  to {
+    left: 100%;
+  }
+}
